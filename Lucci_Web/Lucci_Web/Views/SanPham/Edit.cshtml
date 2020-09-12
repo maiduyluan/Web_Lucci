@@ -1,0 +1,27 @@
+﻿@model Lucci_Web.Models.SanPham
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Tạo mới sản phẩm</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.TenSanPham)
+        @Html.TextBoxFor(sp => sp.TenSanPham, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.KichCo, "Kích Cỡ")
+        @Html.DropDownList("KichCo","")
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.SoLuong)
+        @Html.TextBoxFor(sp => sp.SoLuong, new { type = "number", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.DonGia)
+        @Html.TextBoxFor(sp => sp.DonGia, new { type = "number", @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+    <a href="~/SanPham/List">| Quay lại</a>
+}
+

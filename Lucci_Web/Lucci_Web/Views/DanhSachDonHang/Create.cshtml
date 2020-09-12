@@ -1,0 +1,23 @@
+﻿@model Lucci_Web.Models.DonHang
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Tạo Đơn hàng</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.HoTen)
+        @Html.TextBoxFor(sp => sp.HoTen, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.DienThoai)
+        @Html.TextBoxFor(sp => sp.DienThoai, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.DiaChi)
+        @Html.TextBoxFor(sp => sp.DiaChi, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Đặt hàng</button>
+    <a href="~/SanPham/Index">Quay lại</a>
+}

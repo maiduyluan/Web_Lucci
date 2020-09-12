@@ -1,0 +1,45 @@
+﻿@model Lucci_Web.Models.SanPham
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Bạn có muốn xóa sản phẩm?</h3>
+<div>
+    <h4>Sản Phẩm</h4>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(sp => sp.TenSanPham)
+        </dt>
+        <dd>
+            @Html.DisplayFor(sp => sp.TenSanPham)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(sp => sp.KichCo)
+        </dt>
+        <dt>
+            @Html.DisplayFor(sp => sp.KichCo)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(sp => sp.SoLuong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(sp => sp.SoLuong)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(sp => sp.DonGia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(sp => sp.DonGia)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a href="~/SanPham/List">| Quay lại</a>
+        </div>
+    }
+</div>
+

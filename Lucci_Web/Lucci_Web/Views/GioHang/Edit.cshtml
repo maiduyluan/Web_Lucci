@@ -1,0 +1,16 @@
+﻿@model Lucci_Web.Models.GioHang
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Tạo mới sản phẩm</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.SoLuong)
+        @Html.TextBoxFor(sp => sp.SoLuong, new { type = "number", @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+    <a href="~/GioHang/DSGioHang">| Quay lại</a>
+}
+
+

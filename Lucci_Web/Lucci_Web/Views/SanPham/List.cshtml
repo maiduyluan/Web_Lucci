@@ -1,0 +1,54 @@
+﻿@model List<Lucci_Web.Models.SanPham>
+@{
+    ViewBag.Title = "List";
+}
+
+<style>
+    .btn-create {
+        padding: 8px;
+        position: relative;
+        top: 10px;
+        background: whitesmoke;
+        border: 1px solid black;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    tr:nth-child(odd) {
+        background: whitesmoke;
+    }
+
+    tr, th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+</style>
+<h2>Quản lý sản phẩm có trong hệ thống</h2>
+<table>
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Tên kích cỡ</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Chức năng</th>
+    </tr>
+    @foreach (var sanPham in Model)
+    {
+        <tr>
+            <td>@sanPham.TenSanPham</td>
+            <td>@sanPham.KichCo1.TenKichCo</td>
+            <td>@sanPham.SoLuong.ToString("N0")</td>
+            <td>@sanPham.DonGia.ToString("N0")</td>
+            <td>
+                <a href="~/SanPham/Edit?id=@sanPham.id">Sửa</a> |
+                <a href="~/SanPham/Delete?id=@sanPham.id">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="~/SanPham/Create" class="btn-create">Thêm mới sản phẩm</a>
+<a href="~/DanhSachDonHang/DSDonHang" class="btn-create">Danh sách Đơn hàng</a>
+

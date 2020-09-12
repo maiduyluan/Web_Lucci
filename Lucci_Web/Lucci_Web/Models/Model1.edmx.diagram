@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc9a9fbba0d6452caf3752258c40337f" Name="Diagram1">
+        <EntityTypeShape EntityType="DemoModel.DonHang" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.GioHang" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.KichCo" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DemoModel.FK__GioHang__idDonHa__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK__GioHang__idSanPh__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK__SanPham__KichCo__4BAC3F29" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

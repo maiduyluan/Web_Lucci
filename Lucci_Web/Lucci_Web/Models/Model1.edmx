@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DienThoai" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="NgayGio" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSanPham" Type="int" Nullable="false" />
+          <Property Name="idDonHang" Type="int" Nullable="false" />
+          <Property Name="DonGia" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="TongTien" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KichCo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKichCo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenSanPham" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="KichCo" Type="int" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="DonGia" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__GioHang__idDonHa__5629CD9C">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="idDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__idSanPh__5535A963">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="idSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SanPham__KichCo__4BAC3F29">
+          <End Role="KichCo" Type="Self.KichCo" Multiplicity="1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KichCo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="KichCo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DemoModelStoreContainer">
+          <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KichCo" EntityType="Self.KichCo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GioHang__idDonHa__5629CD9C" Association="Self.FK__GioHang__idDonHa__5629CD9C">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__idSanPh__5535A963" Association="Self.FK__GioHang__idSanPh__5535A963">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SanPham__KichCo__4BAC3F29" Association="Self.FK__SanPham__KichCo__4BAC3F29">
+            <End Role="KichCo" EntitySet="KichCo" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayGio" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__idDonHa__5629CD9C" FromRole="DonHang" ToRole="GioHang" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSanPham" Type="Int32" Nullable="false" />
+          <Property Name="idDonHang" Type="Int32" Nullable="false" />
+          <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="TongTien" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__GioHang__idDonHa__5629CD9C" FromRole="GioHang" ToRole="DonHang" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__GioHang__idSanPh__5535A963" FromRole="GioHang" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="KichCo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKichCo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__KichCo__4BAC3F29" FromRole="KichCo" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenSanPham" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KichCo" Type="Int32" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__idSanPh__5535A963" FromRole="SanPham" ToRole="GioHang" />
+          <NavigationProperty Name="KichCo1" Relationship="Self.FK__SanPham__KichCo__4BAC3F29" FromRole="SanPham" ToRole="KichCo" />
+        </EntityType>
+        <Association Name="FK__GioHang__idDonHa__5629CD9C">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="idDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__idSanPh__5535A963">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="idSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SanPham__KichCo__4BAC3F29">
+          <End Role="KichCo" Type="Self.KichCo" Multiplicity="1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KichCo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="KichCo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DemoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+          <EntitySet Name="GioHangs" EntityType="Self.GioHang" />
+          <EntitySet Name="KichCoes" EntityType="Self.KichCo" />
+          <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+          <AssociationSet Name="FK__GioHang__idDonHa__5629CD9C" Association="Self.FK__GioHang__idDonHa__5629CD9C">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__idSanPh__5535A963" Association="Self.FK__GioHang__idSanPh__5535A963">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SanPham__KichCo__4BAC3F29" Association="Self.FK__SanPham__KichCo__4BAC3F29">
+            <End Role="KichCo" EntitySet="KichCoes" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DemoModelStoreContainer" CdmEntityContainer="DemoEntities">
+          <EntitySetMapping Name="DonHangs">
+            <EntityTypeMapping TypeName="DemoModel.DonHang">
+              <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayGio" ColumnName="NgayGio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GioHangs">
+            <EntityTypeMapping TypeName="DemoModel.GioHang">
+              <MappingFragment StoreEntitySet="GioHang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSanPham" ColumnName="idSanPham" />
+                <ScalarProperty Name="idDonHang" ColumnName="idDonHang" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KichCoes">
+            <EntityTypeMapping TypeName="DemoModel.KichCo">
+              <MappingFragment StoreEntitySet="KichCo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TenKichCo" ColumnName="TenKichCo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="DemoModel.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+                <ScalarProperty Name="KichCo" ColumnName="KichCo" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+﻿@model List<Lucci_Web.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sản Phẩm</h2>
+<div>
+    @foreach (var sanPham in Model.OrderBy(sp => sp.TenSanPham))
+    {
+        <div class="caption">
+            <h3>@sanPham.TenSanPham</h3>
+            <p>
+                KichCo: @sanPham.KichCo1.TenKichCo<br />
+                SoLuong: @sanPham.SoLuong.ToString("N0")
+            </p>
+            <br />
+            <p>
+                <a href="#" class="btn btn-primary" role="button">Giá tiền: @sanPham.DonGia.ToString("N0")<span>VNĐ</span></a>
+                <a href="~/GioHang/Create?productId=@sanPham.id" class="btn btn-default" role="button">Mua</a>
+            </p>
+        </div>
+    }
+</div>
+

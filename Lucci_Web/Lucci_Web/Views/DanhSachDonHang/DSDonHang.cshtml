@@ -1,0 +1,24 @@
+﻿@model List<Lucci_Web.Models.DonHang>
+@{
+    ViewBag.Title = "DSDonHang";
+}
+
+<h2>Danh sách đơn hàng</h2>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Ngày /  Giờ</th>
+        <th>Họ tên</th>
+        <th>Địa chỉ</th>
+        <th>Sđt</th>
+    </tr>
+
+    @foreach (var donHang in Model)
+    {
+    <tr>
+        <td>@donHang.NgayGio</td>
+        <td>@donHang.HoTen</td>
+        <td>@donHang.DiaChi</td>
+        <td>@donHang.DienThoai</td>
+    </tr>
+    }
+</table>

@@ -1,0 +1,16 @@
+﻿@model Lucci_Web.Models.KichCo
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Tạo Mới Kích Cỡ</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(sp => sp.TenKichCo)
+        @Html.TextBoxFor(sp => sp.TenKichCo, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu Kích Cỡ</button>
+    <a href="~/KichCo/List">| Quay lại</a>
+}
+
